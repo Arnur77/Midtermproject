@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Hub</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg">
+      <a class="logo" href="index.html">GAME HUB</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="nav-links navbar-nav ms-auto">
+          <li class="nav-item">
+            <a href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="clubs.html">Clubs & Map</a>
+          </li>
+          <li class="nav-item">
+            <a href="bookings.html">My Bookings</a>
+          </li>
+          <li class="nav-item">
+            <a href="profile.html">Profile</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+
+        <h1>
+          Find Your <span>Gaming Club</span>
+        </h1>
+
+        <p>
+          Search nearby computer clubs, compare PCs,
+          and reserve your next gaming session.
+        </p>
+
+        <div class="hero-search">
+          <form id="homeSearchForm">
+            <div class="row g-2">
+              <div class="col-md-8">
+                <input
+                  type="text"
+                  id="homeSearch"
+                  class="form-control"
+                  placeholder="Search club or location..."
+                >
+              </div>
+
+              <div class="col-md-4">
+                <button type="submit" class="btn btn-primary w-100">
+                  Find a Club
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="mt-4">
+          <a href="clubs.html" class="btn-main">
+            Explore Clubs
+          </a>
+
+          <a href="#popular" class="btn-secondary-custom">
+            Popular Clubs
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="popular" class="py-5">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Popular Clubs</h2>
+        <p>Choose a gaming club and book your PC.</p>
+      </div>
+
+      <div class="cards-grid">
+
+        <article class="club-card">
+          <img
+            src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=900&q=80"
+            alt="Arena One gaming club"
+          >
+
+          <div class="club-card-content">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h3>Arena One</h3>
+              <span class="rating-box">★ 4.9</span>
+            </div>
+
+            <p>
+              Modern gaming club with powerful PCs,
+              240Hz monitors and VIP rooms.
+            </p>
+
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="price">1800 ₸ / hour</span>
+              <a
+                href="details.html?club=Arena%20One"
+                class="btn btn-sm btn-primary"
+              >
+                View
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="club-card">
+          <img
+            src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=900&q=80"
+            alt="Cyber Zone gaming club"
+          >
+
+          <div class="club-card-content">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h3>Cyber Zone</h3>
+              <span class="rating-box">★ 4.7</span>
+            </div>
+
+            <p>
+              Comfortable gaming club with RTX 4070,
+              fast internet and good equipment.
+            </p>
+
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="price">2000 ₸ / hour</span>
+              <a
+                href="details.html?club=Cyber%20Zone"
+                class="btn btn-sm btn-primary"
+              >
+                View
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="club-card">
+          <img
+            src="https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?auto=format&fit=crop&w=900&q=80"
+            alt="Pixel Club gaming club"
+          >
+
+          <div class="club-card-content">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h3>Pixel Club</h3>
+              <span class="rating-box">★ 4.6</span>
+            </div>
+
+            <p>
+              Premium PCs, 280Hz monitors and
+              a special setup for streaming.
+            </p>
+
+            <div class="d-flex justify-content-between align-items-center mt-3">
+              <span class="price">2200 ₸ / hour</span>
+              <a
+                href="details.html?club=Pixel%20Club"
+                class="btn btn-sm btn-primary"
+              >
+                View
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="py-5">
+    <div class="container">
+
+      <div class="section-title">
+        <h2>Why Game Hub?</h2>
+        <p>Simple way to find and book a gaming PC.</p>
+      </div>
+
+      <div class="row g-4">
+
+        <div class="col-md-4">
+          <div class="club-card h-100 p-4">
+            <h3>Find Clubs</h3>
+            <p>
+              Search gaming clubs and see their
+              location, rating and prices.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="club-card h-100 p-4">
+            <h3>Choose a PC</h3>
+            <p>
+              Select an available PC and choose
+              the date and time of your session.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="club-card h-100 p-4">
+            <h3>Book Online</h3>
+            <p>
+              Confirm your booking and see all
+              your reservations in one place.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container text-center py-4">
+    <p>Midterm project - Sultan Nurlybek & Amur Kudaibergen</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  document.getElementById("homeSearchForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const search = document.getElementById("homeSearch").value.trim();
+
+    if (search) {
+      window.location.href = "clubs.html?search=" + encodeURIComponent(search);
+    } else {
+      window.location.href = "clubs.html";
+    }
+  });
+</script>
+
+</body>
+</html>

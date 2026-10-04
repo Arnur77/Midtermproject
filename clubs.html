@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clubs & Map - Game Hub</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  >
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg">
+      <a class="logo" href="index.html">GAME HUB</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="nav-links navbar-nav ms-auto">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="clubs.html">Clubs & Map</a></li>
+          <li><a href="bookings.html">My Bookings</a></li>
+          <li><a href="profile.html">Profile</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="container py-5">
+
+  <div class="section-title">
+    <h1>Gaming Clubs</h1>
+    <p>Find a club, check the map and choose your gaming PC.</p>
+  </div>
+
+  <div class="search-box mb-4">
+
+    <div class="row g-3">
+
+      <div class="col-lg-5">
+        <label for="searchInput" class="form-label">Search</label>
+        <input
+          type="text"
+          id="searchInput"
+          class="form-control"
+          placeholder="Club or location..."
+        >
+      </div>
+
+      <div class="col-md-3">
+        <label for="priceFilter" class="form-label">Price</label>
+        <select id="priceFilter" class="form-select">
+          <option value="all">All prices</option>
+          <option value="1800">1800 ₸</option>
+          <option value="2000">2000 ₸</option>
+          <option value="2200">2200 ₸</option>
+        </select>
+      </div>
+
+      <div class="col-md-2">
+        <label for="ratingFilter" class="form-label">Rating</label>
+        <select id="ratingFilter" class="form-select">
+          <option value="all">All</option>
+          <option value="4.8">4.8+</option>
+          <option value="4.7">4.7+</option>
+          <option value="4.6">4.6+</option>
+        </select>
+      </div>
+
+      <div class="col-md-2 d-flex align-items-end gap-2">
+        <button id="searchButton" class="btn btn-primary flex-grow-1">
+          Search
+        </button>
+
+        <button id="clearButton" class="btn btn-secondary">
+          Clear
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="row g-4">
+
+    <div class="col-lg-7">
+
+      <div id="clubsList" class="clubs-list">
+
+        <article
+          class="club-card club-item"
+          data-name="Arena One"
+          data-location="Astana"
+          data-price="1800"
+          data-rating="4.9"
+          data-lat="51.1282"
+          data-lng="71.4304"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1000&q=80"
+            alt="Arena One"
+          >
+
+          <div class="club-card-content">
+
+            <div class="card-top">
+              <h2>Arena One</h2>
+              <span class="rating-box">★ 4.9</span>
+            </div>
+
+            <p>Astana</p>
+
+            <div class="feature-list">
+              <span class="feature-tag">RTX</span>
+              <span class="feature-tag">240Hz</span>
+              <span class="feature-tag">VIP</span>
+            </div>
+
+            <div class="card-bottom mt-3">
+              <span class="price">1800 ₸ / hour</span>
+
+              <div class="card-actions">
+                <button class="btn btn-outline-light btn-sm show-map">
+                  Map
+                </button>
+
+                <a href="details.html?club=Arena%20One" class="btn btn-primary btn-sm">
+                  Details
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <article
+          class="club-card club-item"
+          data-name="Cyber Zone"
+          data-location="Astana"
+          data-price="2000"
+          data-rating="4.7"
+          data-lat="51.1350"
+          data-lng="71.4270"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=1000&q=80"
+            alt="Cyber Zone"
+          >
+
+          <div class="club-card-content">
+
+            <div class="card-top">
+              <h2>Cyber Zone</h2>
+              <span class="rating-box">★ 4.7</span>
+            </div>
+
+            <p>Astana</p>
+
+            <div class="feature-list">
+              <span class="feature-tag">RTX 4070</span>
+              <span class="feature-tag">165Hz</span>
+              <span class="feature-tag">Headsets</span>
+            </div>
+
+            <div class="card-bottom mt-3">
+              <span class="price">2000 ₸ / hour</span>
+
+              <div class="card-actions">
+                <button class="btn btn-outline-light btn-sm show-map">
+                  Map
+                </button>
+
+                <a href="details.html?club=Cyber%20Zone" class="btn btn-primary btn-sm">
+                  Details
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <article
+          class="club-card club-item"
+          data-name="Pixel Club"
+          data-location="Astana"
+          data-price="2200"
+          data-rating="4.6"
+          data-lat="51.1245"
+          data-lng="71.4420"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?auto=format&fit=crop&w=1000&q=80"
+            alt="Pixel Club"
+          >
+
+          <div class="club-card-content">
+
+            <div class="card-top">
+              <h2>Pixel Club</h2>
+              <span class="rating-box">★ 4.6</span>
+            </div>
+
+            <p>Astana</p>
+
+            <div class="feature-list">
+              <span class="feature-tag">Premium</span>
+              <span class="feature-tag">280Hz</span>
+              <span class="feature-tag">Streaming</span>
+            </div>
+
+            <div class="card-bottom mt-3">
+              <span class="price">2200 ₸ / hour</span>
+
+              <div class="card-actions">
+                <button class="btn btn-outline-light btn-sm show-map">
+                  Map
+                </button>
+
+                <a href="details.html?club=Pixel%20Club" class="btn btn-primary btn-sm">
+                  Details
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <article
+          class="club-card club-item"
+          data-name="GOAT Gaming Club"
+          data-location="Astana"
+          data-price="2000"
+          data-rating="4.8"
+          data-lat="51.1180"
+          data-lng="71.4350"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1607853202273-797f1c22a38e?auto=format&fit=crop&w=1000&q=80"
+            alt="GOAT Gaming Club"
+          >
+
+          <div class="club-card-content">
+
+            <div class="card-top">
+              <h2>GOAT Gaming Club</h2>
+              <span class="rating-box">★ 4.8</span>
+            </div>
+
+            <p>Astana</p>
+
+            <div class="feature-list">
+              <span class="feature-tag">RTX 4060</span>
+              <span class="feature-tag">200Hz</span>
+              <span class="feature-tag">Team Area</span>
+            </div>
+
+            <div class="card-bottom mt-3">
+              <span class="price">2000 ₸ / hour</span>
+
+              <div class="card-actions">
+                <button class="btn btn-outline-light btn-sm show-map">
+                  Map
+                </button>
+
+                <a href="details.html?club=GOAT%20Gaming%20Club" class="btn btn-primary btn-sm">
+                  Details
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+
+    <div class="col-lg-5">
+
+      <div class="map-container">
+        <div class="map-label">
+          Gaming clubs map
+        </div>
+
+        <div id="map"></div>
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container text-center py-4">
+    <p>Midterm project - Sultan Nurlybek & Amur Kudaibergen</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+
+  const map = L.map("map").setView([51.128, 71.435], 13);
+
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "&copy; OpenStreetMap contributors"
+  }).addTo(map);
+
+  const cards = Array.from(document.querySelectorAll(".club-item"));
+
+  const markers = [];
+
+  cards.forEach(card => {
+
+    const name = card.dataset.name;
+    const lat = Number(card.dataset.lat);
+    const lng = Number(card.dataset.lng);
+
+    const marker = L.marker([lat, lng]).addTo(map);
+
+    marker.bindPopup(`
+        <strong>${name}</strong><br>
+        <a href="details.html?club=${encodeURIComponent(name)}">
+            View details
+        </a>
+    `);
+
+    markers.push({
+      card: card,
+      marker: marker
+    });
+  });
+
+  function filterClubs() {
+
+    const search = document.getElementById("searchInput").value.toLowerCase().trim();
+    const price = document.getElementById("priceFilter").value;
+    const rating = document.getElementById("ratingFilter").value;
+
+    const visibleMarkers = [];
+
+    cards.forEach((card, index) => {
+
+      const name = card.dataset.name.toLowerCase();
+      const location = card.dataset.location.toLowerCase();
+      const cardPrice = card.dataset.price;
+      const cardRating = Number(card.dataset.rating);
+
+      const searchMatch =
+        !search ||
+        name.includes(search) ||
+        location.includes(search);
+
+      const priceMatch =
+        price === "all" ||
+        cardPrice === price;
+
+      const ratingMatch =
+        rating === "all" ||
+        cardRating >= Number(rating);
+
+      const visible =
+        searchMatch &&
+        priceMatch &&
+        ratingMatch;
+
+      card.style.display = visible ? "" : "none";
+
+      if (visible) {
+        markers[index].marker.addTo(map);
+        visibleMarkers.push(markers[index].marker);
+      } else {
+        map.removeLayer(markers[index].marker);
+      }
+    });
+
+    if (visibleMarkers.length > 0) {
+      const group = L.featureGroup(visibleMarkers);
+      map.fitBounds(group.getBounds().pad(0.2));
+    }
+  }
+
+  document.getElementById("searchButton").addEventListener("click", filterClubs);
+
+  document.getElementById("clearButton").addEventListener("click", () => {
+
+    document.getElementById("searchInput").value = "";
+    document.getElementById("priceFilter").value = "all";
+    document.getElementById("ratingFilter").value = "all";
+
+    filterClubs();
+  });
+
+  document.getElementById("searchInput").addEventListener("input", filterClubs);
+  document.getElementById("priceFilter").addEventListener("change", filterClubs);
+  document.getElementById("ratingFilter").addEventListener("change", filterClubs);
+
+  document.querySelectorAll(".show-map").forEach((button, index) => {
+
+    button.addEventListener("click", () => {
+
+      const marker = markers[index].marker;
+
+      map.setView(marker.getLatLng(), 15);
+      marker.openPopup();
+    });
+
+  });
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlSearch = urlParams.get("search");
+
+  if (urlSearch) {
+    document.getElementById("searchInput").value = urlSearch;
+    filterClubs();
+  }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Club Details - Game Hub</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg">
+      <a class="logo" href="index.html">GAME HUB</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="nav-links navbar-nav ms-auto">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="clubs.html">Clubs & Map</a></li>
+          <li><a href="bookings.html">My Bookings</a></li>
+          <li><a href="profile.html">Profile</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="container py-5">
+
+  <a href="clubs.html" class="back-link">← Back to clubs</a>
+
+  <div class="row g-4 mt-2">
+
+    <div class="col-lg-8">
+
+      <section class="club-details-card">
+
+        <img id="clubImage" class="club-main-image" src="" alt="Gaming club">
+
+        <div class="p-4">
+
+          <div class="card-top">
+            <div>
+              <h1 id="clubName"></h1>
+              <p id="clubLocation" class="text-muted"></p>
+            </div>
+
+            <span class="rating-box">
+                            ★ <span id="clubRating"></span>
+                        </span>
+          </div>
+
+          <p id="clubDescription" class="club-description mt-3"></p>
+
+          <h2 class="h4 mt-4">Features</h2>
+
+          <div id="clubFeatures" class="feature-list mt-3"></div>
+
+          <h2 class="h4 mt-4">Price</h2>
+
+          <div class="price-card mt-3">
+            <span>Gaming PC</span>
+            <strong>
+              <span id="clubPrice"></span> ₸ / hour
+            </strong>
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+    <div class="col-lg-4">
+
+      <section class="booking-box">
+
+        <h2 class="h3 mb-4">Book a PC</h2>
+
+        <div class="mb-3">
+          <label for="bookingDate" class="form-label">Date</label>
+          <input type="date" id="bookingDate" class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Choose PC</label>
+          <div id="pcList" class="pc-list"></div>
+          <p id="pcStatus" class="small text-muted mt-2"></p>
+        </div>
+
+        <div class="row g-3">
+
+          <div class="col-sm-6">
+            <label for="startTime" class="form-label">Start time</label>
+            <input type="time" id="startTime" class="form-control" value="10:00">
+          </div>
+
+          <div class="col-sm-6">
+            <label for="endTime" class="form-label">End time</label>
+            <input type="time" id="endTime" class="form-control" value="12:00">
+          </div>
+
+        </div>
+
+        <div class="booking-summary mt-4">
+
+          <div class="card-top">
+            <span>Duration</span>
+            <strong><span id="duration">2</span> hour(s)</strong>
+          </div>
+
+          <div class="card-top mt-2">
+            <span>Total</span>
+            <strong class="total-price">
+              <span id="totalPrice">0</span> ₸
+            </strong>
+          </div>
+
+        </div>
+
+        <button id="bookButton" class="btn btn-primary w-100 mt-4">
+          Book Now
+        </button>
+
+        <p id="bookingMessage" class="small mt-3"></p>
+
+      </section>
+
+    </div>
+
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container text-center py-4">
+    <p>Midterm project - Sultan Nurlybek & Amur Kudaibergen</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+  const clubs = {
+
+    "Arena One": {
+      price: 1800,
+      rating: 4.9,
+      location: "Astana",
+      image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80",
+      description: "Arena One is a modern gaming club with powerful computers and comfortable places for casual and competitive gaming.",
+      features: [
+        "RTX graphics cards",
+        "240Hz monitors",
+        "VIP rooms",
+        "Gaming headsets"
+      ]
+    },
+
+    "Cyber Zone": {
+      price: 2000,
+      rating: 4.7,
+      location: "Astana",
+      image: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=1200&q=80",
+      description: "Cyber Zone is a popular gaming club with good equipment, fast internet and a comfortable gaming atmosphere.",
+      features: [
+        "RTX 4070",
+        "165Hz monitors",
+        "Gaming headsets",
+        "Fast internet"
+      ]
+    },
+
+    "Pixel Club": {
+      price: 2200,
+      rating: 4.6,
+      location: "Astana",
+      image: "https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?auto=format&fit=crop&w=1200&q=80",
+      description: "Pixel Club offers premium gaming PCs and equipment for players who want a powerful setup.",
+      features: [
+        "Premium PCs",
+        "280Hz monitors",
+        "Streaming setup",
+        "Comfortable chairs"
+      ]
+    },
+
+    "GOAT Gaming Club": {
+      price: 2000,
+      rating: 4.8,
+      location: "Astana",
+      image: "https://images.unsplash.com/photo-1607853202273-797f1c22a38e?auto=format&fit=crop&w=1200&q=80",
+      description: "GOAT Gaming Club is a good choice for team gaming, tournaments and playing with friends.",
+      features: [
+        "RTX 4060",
+        "200Hz monitors",
+        "Team gaming area",
+        "Gaming headsets"
+      ]
+    }
+
+  };
+
+  const params = new URLSearchParams(window.location.search);
+  const selectedClubName = params.get("club") || "Arena One";
+  const club = clubs[selectedClubName] || clubs["Arena One"];
+
+  document.getElementById("clubName").textContent = selectedClubName;
+  document.getElementById("clubLocation").textContent = club.location;
+  document.getElementById("clubRating").textContent = club.rating;
+  document.getElementById("clubDescription").textContent = club.description;
+  document.getElementById("clubPrice").textContent = club.price.toLocaleString();
+  document.getElementById("clubImage").src = club.image;
+  document.getElementById("clubImage").alt = selectedClubName;
+
+  const featureContainer = document.getElementById("clubFeatures");
+
+  club.features.forEach(feature => {
+    const span = document.createElement("span");
+    span.className = "feature-tag";
+    span.textContent = feature;
+    featureContainer.appendChild(span);
+  });
+
+  const pcs = [
+    "PC 01",
+    "PC 02",
+    "PC 03",
+    "PC 04"
+  ];
+
+  let selectedPC = "PC 01";
+
+  function getBookings() {
+    return JSON.parse(localStorage.getItem("gameHubBookings") || "[]");
+  }
+
+  function timeToMinutes(time) {
+    const parts = time.split(":");
+    return Number(parts[0]) * 60 + Number(parts[1]);
+  }
+
+  function isPCBusy(pc, date, start, end) {
+
+    const bookings = getBookings();
+
+    const startMinutes = timeToMinutes(start);
+    const endMinutes = timeToMinutes(end);
+
+    return bookings.some(booking => {
+
+      if (booking.club !== selectedClubName) {
+        return false;
+      }
+
+      if (booking.pc !== pc) {
+        return false;
+      }
+
+      if (booking.date !== date) {
+        return false;
+      }
+
+      const bookingStart = timeToMinutes(booking.start);
+      const bookingEnd = timeToMinutes(booking.end);
+
+      return startMinutes < bookingEnd && endMinutes > bookingStart;
+    });
+  }
+
+  function updateBookingInfo() {
+
+    const start = document.getElementById("startTime").value;
+    const end = document.getElementById("endTime").value;
+
+    const startMinutes = timeToMinutes(start);
+    const endMinutes = timeToMinutes(end);
+
+    if (endMinutes <= startMinutes) {
+      document.getElementById("duration").textContent = "0";
+      document.getElementById("totalPrice").textContent = "0";
+      return;
+    }
+
+    const duration = (endMinutes - startMinutes) / 60;
+    const total = duration * club.price;
+
+    document.getElementById("duration").textContent = duration;
+    document.getElementById("totalPrice").textContent = total.toLocaleString();
+  }
+
+  function renderPCs() {
+
+    const date = document.getElementById("bookingDate").value;
+    const start = document.getElementById("startTime").value;
+    const end = document.getElementById("endTime").value;
+
+    const pcList = document.getElementById("pcList");
+
+    pcList.innerHTML = "";
+
+    let availablePC = null;
+
+    pcs.forEach(pc => {
+
+      const busy =
+        date &&
+        start &&
+        end &&
+        isPCBusy(pc, date, start, end);
+
+      const button = document.createElement("button");
+
+      button.type = "button";
+      button.className = "pc-button";
+
+      if (busy) {
+        button.classList.add("busy");
+        button.disabled = true;
+      }
+
+      if (!busy && !availablePC) {
+        availablePC = pc;
+      }
+
+      button.innerHTML = `
+            <span>${pc}</span>
+            <small>${busy ? "Busy" : "Available"}</small>
+        `;
+
+      button.addEventListener("click", function() {
+
+        selectedPC = pc;
+
+        document.querySelectorAll(".pc-button").forEach(item => {
+          item.classList.remove("selected");
+        });
+
+        button.classList.add("selected");
+      });
+
+      pcList.appendChild(button);
+    });
+
+    if (!availablePC) {
+      selectedPC = null;
+      document.getElementById("pcStatus").textContent =
+        "All PCs are busy for this time.";
+    } else {
+
+      const currentBusy =
+        isPCBusy(selectedPC, date, start, end);
+
+      if (!selectedPC || currentBusy) {
+        selectedPC = availablePC;
+      }
+
+      document.querySelectorAll(".pc-button").forEach(button => {
+
+        if (
+          button.querySelector("span").textContent === selectedPC
+        ) {
+          button.classList.add("selected");
+        }
+
+      });
+
+      document.getElementById("pcStatus").textContent =
+        "Select an available PC.";
+    }
+
+    updateBookingInfo();
+  }
+
+  const today = new Date();
+
+  const todayString =
+    today.getFullYear() +
+    "-" +
+    String(today.getMonth() + 1).padStart(2, "0") +
+    "-" +
+    String(today.getDate()).padStart(2, "0");
+
+  document.getElementById("bookingDate").min = todayString;
+  document.getElementById("bookingDate").value = todayString;
+
+  document.getElementById("bookingDate").addEventListener("change", renderPCs);
+  document.getElementById("startTime").addEventListener("change", renderPCs);
+  document.getElementById("endTime").addEventListener("change", renderPCs);
+
+  document.getElementById("bookButton").addEventListener("click", function() {
+
+    const date = document.getElementById("bookingDate").value;
+    const start = document.getElementById("startTime").value;
+    const end = document.getElementById("endTime").value;
+
+    const message = document.getElementById("bookingMessage");
+
+    message.textContent = "";
+    message.className = "small mt-3";
+
+    if (!date) {
+      message.textContent = "Please select a date.";
+      message.classList.add("text-danger");
+      return;
+    }
+
+    if (!selectedPC) {
+      message.textContent = "Please select an available PC.";
+      message.classList.add("text-danger");
+      return;
+    }
+
+    const startMinutes = timeToMinutes(start);
+    const endMinutes = timeToMinutes(end);
+
+    if (endMinutes <= startMinutes) {
+      message.textContent = "End time must be later than start time.";
+      message.classList.add("text-danger");
+      return;
+    }
+
+    if (isPCBusy(selectedPC, date, start, end)) {
+      message.textContent = "This PC is already booked.";
+      message.classList.add("text-danger");
+      renderPCs();
+      return;
+    }
+
+    const duration = (endMinutes - startMinutes) / 60;
+    const total = duration * club.price;
+
+    window.location.href =
+      "payment.html" +
+      "?club=" + encodeURIComponent(selectedClubName) +
+      "&pc=" + encodeURIComponent(selectedPC) +
+      "&date=" + encodeURIComponent(date) +
+      "&start=" + encodeURIComponent(start) +
+      "&end=" + encodeURIComponent(end) +
+      "&hours=" + encodeURIComponent(duration) +
+      "&price=" + encodeURIComponent(total);
+  });
+
+  renderPCs();
+
+</script>
+
+</body>
+</html>
